@@ -8,7 +8,8 @@ const ShopPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const { data } = await axios.get(`${API_URL}/api/products`);
         setProducts(data);
       } catch (error) {
         console.error(error);

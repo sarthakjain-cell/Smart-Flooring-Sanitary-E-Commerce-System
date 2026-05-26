@@ -8,7 +8,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const { data } = await axios.get(`${API_URL}/api/products`);
         setProducts(data.slice(0, 3)); // Only show top 3 on home
       } catch (error) {
         console.error(error);
